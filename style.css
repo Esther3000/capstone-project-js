@@ -80,6 +80,9 @@ header .option{
 	margin-left: 0px;
 	height: 15px;
 	width: 10px;
+	cursor: pointer;
+	color: transparent;
+	text-shadow: 0px 1px 0px #000;
 
 }
  .collection-item:hover .cart-button{
@@ -99,13 +102,50 @@ header .option{
     display: flex;
     justify-content: space-between;
 }
-.heading{
-	margin: 150px;
-	word-spacing: 100px;
-    max-width: 700px;
+/*cart page*/
+.cart-container{
+	max-width: 650px;
+	justify-content: space-around;
+	margin: 0 auto;
+	margin-top: 50px;
 }
-hr{
-	width: 700px;
+.cart-heading{
+	width: 100%;
+	max-width: 650px;
+	display: flex;
+	justify-content: flex-start;
+	border-bottom: 1px solid #000;
+	margin: 0 auto; 
+}
+.product{
+	width: 30%;
+
+}
+.product img{
+	margin-top: 40px;
+	height: 200px;
+	width: 150px;
+
+}
+.description{
+	width: 20%;
+	display: flex;
+	align-items: center;
+}
+.quantity{
+	width: 20%;
+	display: flex;
+	align-items: center;
+}
+.price{
+	width: 20%;
+	display: flex;
+	align-items: center;
+}
+.remove{
+	width: 20%;
+	display: flex;
+	align-items: center;
 }
 .test-warning{
 	text-align: center;
@@ -114,7 +154,12 @@ hr{
     color: red;
 }
 .StripeCheckout{
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr); 
+
     margin-top: 50px;
+}
+@media only screen and (max-width: 600px) {
+	
 }
     
