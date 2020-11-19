@@ -161,7 +161,7 @@ for (let i = 0; i < carts.length; i++){
  	
  	productNumbers = parseInt(productNumbers);
       if (productNumbers){
-          localStorage.setItem("cartNumbers", productNumbers+1);
+          localStorage.setItem("cartNumbers", productNumbers + 1);
           document.querySelector(".item-count").textContent = productNumbers + 1;
       }else {
       	localStorage.setItem("cartNumbers", 1);
@@ -196,16 +196,18 @@ for (let i = 0; i < carts.length; i++){
  	var cartCost = localStorage.getItem("totalCost");
  	
 
- 	if(cartCost != null){
+ 	if(cartCost !== null){
  		cartCost = parseInt(cartCost);
        localStorage.setItem("totalCost", cartCost + product.price);
  	}else{
        localStorage.setItem("totalCost", product.price); 
  	}
  	
+ 	
  }
 
 function displayCart(){
+	var cartCost = localStorage.getItem("totalCost");
 	let cartItems = localStorage.getItem("productsInCart");
 	cartItems = JSON.parse(cartItems);
 
@@ -214,21 +216,22 @@ function displayCart(){
        productContainer.innerHTML = "";
        Object.values(cartItems).map(item =>{
        	productContainer.innerHTML += `
-       	<div class="cert-container">
-       	<div class="cart-heading">
+       	<div class="cart-contain">
+       	<div class="cart-header">
         <div class="product">
         <img src=${item.image}>
         
         </div>
-        <p class="description">${item.name}</p>
+        <div class="description">
+        <p >${item.name}</p></div>
         <div class="quantity">
-        <p>&#x0003C;</p>
-        <p>${item.inCart}</p>
-        <p>&#x0003E;</p>
+        <button onclick="add()" class="add">&#x0003C;</button>
+        <p class="in-cart">${item.inCart}</p>
+        <button onclick="subtract(e)" class="minus">&#x0003E;</button>
         </div>
 
-        <div class="price">${item.inCart} *N ${item.price}.00</div>
-        <div class="remove"><p>&#x02A2F;</p></div>
+        <div class="price"><p>N ${item.price}.00</p></div>
+        <div class="remove"><button onclick="myFunction()">&#x02A2F;</button></div>
         </div>
 
         </div>
@@ -236,17 +239,45 @@ function displayCart(){
         `
         ;
         
-         
+        
         
        }
+
        
        );
+       productContainer.innerHTML += `
+         <div class="total-container"><h3 class="total-title">TOTAL:</h3>
+         <h3 class="total">${cartCost}</h3
+         </div>
+        ` 
 
        
        
 	}
-		
+	
 }
+function myFunction() {
+	let productNumbers = localStorage.getItem("cartNumbers");
+  var myobj = document.querySelector(".cart-contain");
+  myobj.remove();
+}
+function add()
+{
+  var txtNumber = document.querySelector(".in-cart");
+  var newNumber = parseInt(txtNumber.value) + 1;
+  txtNumber.value = newNumber;
+}
+
+function subtract(e)
+{
+  e.preventDefault();
+  var txtNumber = document.querySelector(".in-cart");
+  var newNumber = parseInt(txtNumber.value) - 1;
+  txtNumber.value = newNumber;
+  return false;
+}
+
+
  displayCart();
  onLoadCartNumbers();
 

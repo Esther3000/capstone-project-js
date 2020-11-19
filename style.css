@@ -54,7 +54,7 @@ header .option{
   .items{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
+    align-items: center;
     }
  .cart-button{
 	position: relative;
@@ -109,6 +109,12 @@ header .option{
 	margin: 0 auto;
 	margin-top: 50px;
 }
+.cart-contain{
+	max-width: 650px;
+	justify-content: space-around;
+	margin: 0 auto;
+	margin-top: 50px;
+}
 .cart-heading{
 	width: 100%;
 	max-width: 650px;
@@ -117,6 +123,15 @@ header .option{
 	border-bottom: 1px solid #000;
 	margin: 0 auto; 
 }
+.cart-header{
+	width: 100%;
+	max-width: 650px;
+	display: flex;
+	justify-content: flex-start;
+	border-bottom: 1px solid #000;
+	margin: 0 auto; 
+}
+
 .product{
 	width: 30%;
 
@@ -132,26 +147,77 @@ header .option{
 	display: flex;
 	align-items: center;
 }
+.description p{
+	font-size: 1.3rem;
+
+}
 .quantity{
-	width: 20%;
+	width: 30%;
 	display: flex;
 	align-items: center;
+	display: flex;
+	justify-content: space-around;
+	
+
 }
 .price{
 	width: 20%;
 	display: flex;
 	align-items: center;
 }
+.price p{
+	font-size: 1.3rem;
+
+}
 .remove{
 	width: 20%;
 	display: flex;
 	align-items: center;
+}
+.in-cart{
+	font-size: 1.3rem;
+}
+.add{
+	font-size: 30px;
+	cursor: pointer;
+	font-weight: bold;
+	border: none; 
+	background-color: transparent;
+	outline: none;
+
+}
+.minus{
+	font-size: 30px;
+	cursor: pointer;
+	font-weight: bold;
+	border: none; 
+	background-color: transparent;
+	outline: none;
+}
+.remove button{
+	font-size:30px;
+	cursor: pointer;
+	border: none; 
+	background-color: transparent;
+	outline: none;
 }
 .test-warning{
 	text-align: center;
     margin-top: 40px;
     font-size: 24px;
     color: red;
+}
+.total-container{
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	padding: 10px 0;
+}
+.total-title{
+	width: 20%;
+}
+.total{
+	width: 10%;
 }
 .StripeCheckout{
 	display: grid;
