@@ -210,6 +210,7 @@ function displayCart(){
 	var cartCost = localStorage.getItem("totalCost");
 	let cartItems = localStorage.getItem("productsInCart");
 	cartItems = JSON.parse(cartItems);
+	
 
 	let productContainer = document.querySelector(".output");
 	if( cartItems && productContainer ){
@@ -225,9 +226,9 @@ function displayCart(){
         <div class="description">
         <p >${item.name}</p></div>
         <div class="quantity">
-        <button onclick="add()" class="add">&#x0003C;</button>
+        <button onclick="subtract()" class="add">&#x0003C;</button>
         <p class="in-cart">${item.inCart}</p>
-        <button onclick="subtract(e)" class="minus">&#x0003E;</button>
+        <button onclick="add()" class="minus">&#x0003E;</button>
         </div>
 
         <div class="price"><p>N ${item.price}.00</p></div>
@@ -261,23 +262,38 @@ function myFunction() {
   var myobj = document.querySelector(".cart-contain");
   myobj.remove();
 }
-function add()
+function add(product)
 {
-  var txtNumber = document.querySelector(".in-cart");
-  var newNumber = parseInt(txtNumber.value) + 1;
-  txtNumber.value = newNumber;
+  let productNumbers = localStorage.getItem("product.inCart");
+  productNumbers = parseInt(productNumbers);
+      if (productNumbers){
+          localStorage.setItem("product.inCart", productNumbers + 1);
+          document.querySelector(".in-cart").textContent = productNumbers + 1;
+      }else {
+      	localStorage.setItem("product.inCart", 1);
+      	document.querySelector(".in-cart").textContent = 1;
+      }
+      setItems(product[i]);
+      totalCost();
 }
 
-function subtract(e)
+function subtract(product)
 {
-  e.preventDefault();
-  var txtNumber = document.querySelector(".in-cart");
-  var newNumber = parseInt(txtNumber.value) - 1;
-  txtNumber.value = newNumber;
-  return false;
+  var productNumbers = localStorage.getItem("product.inCart");
+  productNumbers = parseInt(productNumbers);
+      if (productNumbers){
+          localStorage.setItem("product.inCart", productNumbers - 1);
+          document.querySelector(".in-cart").textContent = productNumbers - 1;
+      }else {
+      	localStorage.setItem("product.in-cart", 1);
+      	document.querySelector(".in-cart").textContent = 1;
+      }
+      setItems();
+      totalCost();
+
 }
 
-
+ 
  displayCart();
  onLoadCartNumbers();
 

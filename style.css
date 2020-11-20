@@ -220,10 +220,20 @@ header .option{
 	width: 10%;
 }
 .StripeCheckout{
-	display: grid;
-	grid-template-columns: repeat(4, 1fr); 
+	overflow: hidden; 
+	display: inline-block; 
+	background: linear-gradient(rgb(40, 160, 229), rgb(1, 94, 148)); 
+	border: 0px; 
+	padding: 1px; 
+	text-decoration: none; 
+	border-radius: 5px; 
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px; 
+	cursor: pointer; 
+	visibility: visible; 
+	user-select: none;
+	margin-left: 50%;
+	margin-top: 50px;
 
-    margin-top: 50px;
 }
 @media only screen and (max-width: 600px) {
 	
