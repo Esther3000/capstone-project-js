@@ -149,6 +149,7 @@ for (let i = 0; i < carts.length; i++){
      	totalCost(products[i]);
      });
  }
+
  function onLoadCartNumbers(){
  	let productNumbers = localStorage.getItem("cartNumbers");
  	if(productNumbers){
@@ -232,7 +233,7 @@ function displayCart(){
         </div>
 
         <div class="price"><p>N ${item.price}.00</p></div>
-        <div class="remove"><button onclick="myFunction()">&#x02A2F;</button></div>
+        <div class="remove"><button onclick="remove()">&#x02A2F;</button></div>
         </div>
 
         </div>
@@ -257,42 +258,42 @@ function displayCart(){
 	}
 	
 }
-function myFunction() {
+function remove() {
 	let productNumbers = localStorage.getItem("cartNumbers");
   var myobj = document.querySelector(".cart-contain");
   myobj.remove();
 }
 function add(product)
 {
-  let productNumbers = localStorage.getItem("product.inCart");
+  let productNumbers = localStorage.getItem("item.inCart");
   productNumbers = parseInt(productNumbers);
       if (productNumbers){
-          localStorage.setItem("product.inCart", productNumbers + 1);
+          localStorage.setItem("item.inCart", productNumbers + 1);
           document.querySelector(".in-cart").textContent = productNumbers + 1;
       }else {
-      	localStorage.setItem("product.inCart", 1);
+      	localStorage.setItem("item.inCart", 1);
       	document.querySelector(".in-cart").textContent = 1;
       }
-      setItems(product[i]);
-      totalCost();
+      setItems().forEach();
+      
 }
 
 function subtract(product)
 {
-  var productNumbers = localStorage.getItem("product.inCart");
+  var productNumbers = localStorage.getItem("item.inCart");
   productNumbers = parseInt(productNumbers);
       if (productNumbers){
-          localStorage.setItem("product.inCart", productNumbers - 1);
+          localStorage.setItem("item.inCart", productNumbers - 1);
           document.querySelector(".in-cart").textContent = productNumbers - 1;
       }else {
-      	localStorage.setItem("product.in-cart", 1);
+      	localStorage.setItem("item.inCart", 1);
       	document.querySelector(".in-cart").textContent = 1;
       }
-      setItems();
-      totalCost();
+      setItems().forEach();
+      
 
 }
-
+ 
  
  displayCart();
  onLoadCartNumbers();
